@@ -1,0 +1,91 @@
+### Cadastrando Funcionario
+
+POST http://localhost:3000/funcionario
+Content-Type: application/json
+
+{
+    "nome": "a",
+    "email": "email1",
+    "senha": "senha1"
+}
+
+### Login
+# @name valToken
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "email1",
+    "senha": "senha1"
+}
+
+###Cadastrar Motorista
+
+POST http://localhost:3000/motorista
+Authorization: {{valToken.response.body.token}}
+Content-Type: application/json
+
+{
+    "nome": "a",
+    "cnh": "cnh1",
+    "cpf": "cpf1",
+    "telefone": "telefone1"
+}
+### listar motorista
+GET http://localhost:3000/motoristas
+Authorization: {{valToken.response.body.token}}
+Content-Type: application/json
+### buscar id motorista
+GET http://localhost:3000/motorista/id/1
+Authorization: {{valToken.response.body.token}}
+Content-Type: application/json
+### buscar nome motorista
+GET http://localhost:3000/motorista/nome/a
+Authorization: {{valToken.response.body.token}}
+Content-Type: application/json
+###Atualizar
+PATCH http://localhost:3000/motoristas/1
+Authorization: {{valToken.response.body.token}}
+Content-Type: application/json
+{
+    "nome": "jose",
+    "cnh": "cnh1",
+    "cpf": "cpf1",
+    "telefone": "telefone1"
+}
+###Apagar
+DELETE  http://localhost:3000/motoristas/1
+Authorization: {{valToken.response.body.token}}
+Content-Type: application/json
+{
+    "nome": "jose",
+    "cnh": "cnh1",
+    "cpf": "cpf1",
+    "telefone": "telefone1"
+}
+###CADASTRA CARGA
+POST http://localhost:3000/carga
+Authorization: {{valToken.response.body.token}}
+Content-Type: application/json
+{
+    "descricao": "aracaju",
+    "peso": 10,
+    "volume": 12,
+    "codRastreio": "1",
+    "idMotorista": 2
+}
+###CADASTRA ENTREGA
+POST http://localhost:3000/entrega
+Authorization: {{valToken.response.body.token}}
+Content-Type: application/json
+{
+    "cidadeDestino": "aracaju",
+    "statusAtual": "ENTREGUE",
+    "dataHora": "2026-10-27T09:00:00",
+    "idCarga": 1
+}
+###Listar ENTREGAs
+GET http://localhost:3000/entregas
+Authorization: {{valToken.response.body.token}}
+Content-Type: application/json
